@@ -43,7 +43,7 @@ DATA = ({BASE_64_CHAR}{4})* ({BASE_64_CHAR} {BASE_64_CHAR} (({BASE_64_CHAR} "=")
 <YYINITIAL> "{"                                             { yybegin(YYINITIAL); return ReconTypes.OPEN_CRL_BRACK; }
 <YYINITIAL> "}"                                             { yybegin(YYINITIAL); return ReconTypes.CLOSE_CRL_BRACK; }
 <YYINITIAL> ":"                                             { yybegin(YYINITIAL); return ReconTypes.COL; }
-<YYINITIAL> "," | ";"                                 { yybegin(YYINITIAL); return ReconTypes.SEP; }
+<YYINITIAL> "," | ";"                                       { yybegin(YYINITIAL); return ReconTypes.SEP; }
 <YYINITIAL> {BOOL}                                          { yybegin(YYINITIAL); return ReconTypes.BOOL; }
 <YYINITIAL> {STRING}                                        { yybegin(YYINITIAL); return ReconTypes.STRING; }
 <YYINITIAL> {IDENT}                                         { yybegin(YYINITIAL); return ReconTypes.IDENT; }
