@@ -1,0 +1,59 @@
+plugins {
+    id 'java'
+    id 'org.jetbrains.intellij' version '0.6.5'
+    id "org.jetbrains.grammarkit" version "2020.3.2"
+}
+
+apply plugin: 'org.jetbrains.grammarkit'
+
+sourceSets.main.java.srcDirs 'src/main/gen'
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+}
+
+// See https://github.com/JetBrains/gradle-intellij-plugin/
+intellij {
+    version '2020.3.1'
+}
+patchPluginXml {
+    changeNotes """
+      Add change notes here.<br>
+      <em>most HTML tags may be used</em>"""
+}
+test {
+    useJUnitPlatform()
+}
+
+import org.jetbrains.grammarkit.tasks.*
+
+task generateAll {
+    group = "generate"
+    dependsOn 'generateReconlLexer'
+    dependsOn 'generateReconParser'
+}
+
+task generateReconlLexer(type: GenerateLexer) {
+    group = "generate"
+    source = "src/main/java/org/swim/language/Recon.flex"
+    targetDir = "src/main/gen/org/swim/language"
+    targetClass = "ReconLexer"
+    purgeOldFiles = true
+}
+
+task generateReconParser(type: GenerateParser) {
+    group = "generate"
+    source = "src/main/java/org/swim/language/Recon.bnf"
+    targetRoot = 'src/main/gen/'
+    pathToParser = 'org/swim/language/parser/ReconParser.java'
+    pathToPsiRoot = '/org/swim/language/psi'
+    purgeOldFiles = true
+}

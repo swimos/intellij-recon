@@ -1,0 +1,32 @@
+{
+  parserClass="org.swim.language.parser.ReconParser"
+
+  extends="com.intellij.extapi.psi.ASTWrapperPsiElement"
+
+  psiClassPrefix="Recon"
+  psiImplClassSuffix="Impl"
+  psiPackage="org.swim.language.psi"
+  psiImplPackage="org.swim.language.psi.impl"
+
+  elementTypeHolderClass="org.swim.language.psi.ReconTypes"
+  elementTypeClass="org.swim.language.psi.ReconElementType"
+  tokenTypeClass="org.swim.language.psi.ReconTokenType"
+}
+
+reconFile ::= (blockItem | attribute | literal | COMMENT) *
+
+blockItem ::= literal SP* (attribute SP* blockItem?)? | attribute SP* blockItem? | COMMENT
+
+literal ::= record | DATA | IDENT | STRING | NUM | BOOL
+
+attribute ::= ATTR (OPEN_BRACK block? CLOSE_BRACK)?
+
+slots ::= slot SP* ((SEP | NL) whiteSpace* slots)?
+
+slot ::= blockItem (SP* COL SP* blockItem?)?
+
+block ::= whiteSpace* slots whiteSpace*
+
+record ::= OPEN_CRL_BRACK block CLOSE_CRL_BRACK
+
+whiteSpace ::= NL | SP
