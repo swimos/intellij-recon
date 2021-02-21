@@ -18,14 +18,7 @@ public class ReconFormattingModelBuilder implements FormattingModelBuilder {
                 .after(ReconTypes.SEP)
                 .lineBreakInCode()
                 .before(ReconTypes.CLOSE_CRL_BRACK)
-                .lineBreakInCode()
-                .after(ReconTypes.COL)
-                .spaces(1)
-                .before(ReconTypes.OPEN_CRL_BRACK)
-                .spaces(1);
-//                .spaceIf(settings.getCommonSettings(ReconLanguage.INSTANCE.getID()).SPACE_AFTER_COLON)
-//                .before(ReconTypes.IDENT)
-//                .none();
+                .lineBreakInCode();
     }
 
     @NotNull

@@ -2,10 +2,10 @@ package org.swim.language;
 
 import com.intellij.formatting.*;
 import com.intellij.lang.ASTNode;
-import com.intellij.psi.TokenType;
 import com.intellij.psi.formatter.common.AbstractBlock;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.swim.language.psi.ReconTypes;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +26,7 @@ public class ReconBlock extends AbstractBlock {
         ASTNode child = myNode.getFirstChildNode();
 
         while (child != null) {
-            if (child.getElementType() != TokenType.WHITE_SPACE) {
+            if (child.getElementType() != ReconTypes.WHITE_SPACE) {
                 Block block = new ReconBlock(child, Wrap.createWrap(WrapType.NONE, false), Alignment.createAlignment(),
                         spacingBuilder);
                 blocks.add(block);

@@ -16,14 +16,14 @@ import java.util.Map;
 public class ReconColorSettingPage implements ColorSettingsPage {
 
     private static final AttributesDescriptor[] DESCRIPTORS = new AttributesDescriptor[]{
-            new AttributesDescriptor("Operator", ReconSyntaxHighlighter.OPERATOR),
-            new AttributesDescriptor("Boolean", ReconSyntaxHighlighter.BOOL),
-            new AttributesDescriptor("String", ReconSyntaxHighlighter.STRING),
-            new AttributesDescriptor("Identifier", ReconSyntaxHighlighter.IDENT),
-            new AttributesDescriptor("Number", ReconSyntaxHighlighter.NUM),
-            new AttributesDescriptor("Comment", ReconSyntaxHighlighter.COMMENT),
-            new AttributesDescriptor("Data", ReconSyntaxHighlighter.DATA),
             new AttributesDescriptor("Attribute", ReconSyntaxHighlighter.ATTR),
+            new AttributesDescriptor("Identifier", ReconSyntaxHighlighter.IDENT),
+            new AttributesDescriptor("String", ReconSyntaxHighlighter.STRING),
+            new AttributesDescriptor("Number", ReconSyntaxHighlighter.NUM),
+            new AttributesDescriptor("Boolean", ReconSyntaxHighlighter.BOOL),
+            new AttributesDescriptor("Operator", ReconSyntaxHighlighter.OPERATOR),
+            new AttributesDescriptor("Data", ReconSyntaxHighlighter.DATA),
+            new AttributesDescriptor("Comment", ReconSyntaxHighlighter.COMMENT),
             new AttributesDescriptor("Bad character", ReconSyntaxHighlighter.BAD_CHARACTER)
 
 
@@ -44,18 +44,15 @@ public class ReconColorSettingPage implements ColorSettingsPage {
     @NotNull
     @Override
     public String getDemoText() {
-        return "# You are reading the \".properties\" entry.\n" +
-                "! The exclamation mark can also mark text as comments.\n" +
-                "website = https://en.wikipedia.org/\n" +
-                "language = English\n" +
-                "# The backslash below tells the application to continue reading\n" +
-                "# the value onto the next line.\n" +
-                "message = Welcome to \\\n" +
-                "          Wikipedia!\n" +
-                "# Add spaces to the key\n" +
-                "key\\ with\\ spaces = This is the value that could be looked up with the key \"key with spaces\".\n" +
-                "# Unicode\n" +
-                "tab : \\u0009";
+        return "# This is a comment\n" +
+                "@config {\n"+
+                "   @client {\n" +
+                "       buffer_size: 5,\n" +
+                "       on_invalid: \"ignore\",\n" +
+                "       data: %AA==,\n" +
+                "       started: true\n" +
+                "   }\n" +
+                "}";
     }
 
     @Nullable
