@@ -26,7 +26,7 @@ public class ReconBlock extends AbstractBlock {
         ASTNode child = myNode.getFirstChildNode();
 
         while (child != null) {
-            if (child.getElementType() != ReconTypes.WHITE_SPACE) {
+            if (child.getElementType() != ReconTypes.WHITE_SPACE && child.getElementType() != ReconTypes.NL && child.getElementType() != ReconTypes.SP) {
                 Block block = new ReconBlock(child, Wrap.createWrap(WrapType.NONE, false), Alignment.createAlignment(),
                         spacingBuilder);
                 blocks.add(block);
