@@ -12,22 +12,20 @@
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <fileType name="Recon File" implementationClass="org.swim.language.ReconFileType"
+        <fileType name="Recon file" implementationClass="org.swim.language.ReconFileType"
                   fieldName="INSTANCE" language="Recon" extensions="recon"/>
-
         <lang.parserDefinition language="Recon"
-                  implementationClass="org.swim.language.ReconParserDefinition"/>
-
+                               implementationClass="org.swim.language.ReconParserDefinition"/>
         <lang.syntaxHighlighterFactory language="Recon"
-                   implementationClass="org.swim.language.ReconSyntaxHighlighterFactory"/>
-
+                                       implementationClass="org.swim.language.ReconSyntaxHighlighterFactory"/>
         <lang.commenter language="Recon" implementationClass="org.swim.language.ReconCommenter"/>
-
         <lang.braceMatcher language="Recon" implementationClass="org.swim.language.ReconPairedBraceMatcher"/>
-
         <lang.formatter language="Recon" implementationClass="org.swim.language.ReconFormattingModelBuilder"/>
-
         <colorSettingsPage implementation="org.swim.language.ReconColorSettingPage"/>
+        <lang.foldingBuilder language="Recon" implementationClass="org.swim.language.ReconFoldingBuilder"/>
+        <codeStyleSettingsProvider implementation="org.swim.language.ReconCodeStyleSettingsProvider"/>
+        <langCodeStyleSettingsProvider
+                implementation="org.swim.language.ReconLanguageCodeStyleSettingsProvider"/>
     </extensions>
 
     <actions>

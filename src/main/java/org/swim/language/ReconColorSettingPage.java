@@ -25,8 +25,6 @@ public class ReconColorSettingPage implements ColorSettingsPage {
             new AttributesDescriptor("Data", ReconSyntaxHighlighter.DATA),
             new AttributesDescriptor("Comment", ReconSyntaxHighlighter.COMMENT),
             new AttributesDescriptor("Bad character", ReconSyntaxHighlighter.BAD_CHARACTER)
-
-
     };
 
     @Nullable
@@ -45,7 +43,7 @@ public class ReconColorSettingPage implements ColorSettingsPage {
     @Override
     public String getDemoText() {
         return "# This is a comment\n" +
-                "@config {\n"+
+                "@config {\n" +
                 "   @client {\n" +
                 "       buffer_size: 5,\n" +
                 "       on_invalid: \"ignore\",\n" +

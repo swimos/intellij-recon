@@ -21,7 +21,7 @@ public class ReconFile extends PsiFileBase {
 
     @Override
     public String toString() {
-        return "Recon File";
+        return "Recon file";
     }
 
 }
