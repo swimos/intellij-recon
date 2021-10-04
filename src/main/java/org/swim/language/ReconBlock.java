@@ -27,7 +27,7 @@ public class ReconBlock extends AbstractBlock {
 
         while (child != null) {
             if (child.getElementType() != ReconTypes.WHITE_SPACE && child.getElementType() != ReconTypes.NL && child.getElementType() != ReconTypes.SP) {
-                Block block = new ReconBlock(child, Wrap.createWrap(WrapType.NONE, false), Alignment.createAlignment(),
+                Block block = new ReconBlock(child, Wrap.createWrap(WrapType.NONE, false), null,
                         spacingBuilder);
                 blocks.add(block);
             }
@@ -38,7 +38,11 @@ public class ReconBlock extends AbstractBlock {
 
     @Override
     public Indent getIndent() {
-        return Indent.getNoneIndent();
+        if (myNode.getElementType() == ReconTypes.BLOCK) {
+            return Indent.getSpaceIndent(4);
+        } else {
+            return Indent.getSpaceIndent(0);
+        }
     }
 
     @Nullable

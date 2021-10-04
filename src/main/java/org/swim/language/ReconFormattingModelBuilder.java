@@ -13,6 +13,10 @@ public class ReconFormattingModelBuilder implements FormattingModelBuilder {
 
     private static SpacingBuilder createSpaceBuilder(CodeStyleSettings settings) {
         return new SpacingBuilder(settings, ReconLanguage.INSTANCE)
+                .after(ReconTypes.ATTRIBUTE)
+                .spaces(1)
+                .after(ReconTypes.COL)
+                .spaces(1)
                 .after(ReconTypes.OPEN_CRL_BRACK)
                 .lineBreakInCode()
                 .after(ReconTypes.SEP)
