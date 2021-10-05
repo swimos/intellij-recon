@@ -2,6 +2,7 @@ package org.swim.language;
 
 import com.intellij.formatting.*;
 import com.intellij.lang.ASTNode;
+import com.intellij.psi.PsiErrorElement;
 import com.intellij.psi.formatter.common.AbstractBlock;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -26,6 +27,10 @@ public class ReconBlock extends AbstractBlock {
         ASTNode child = myNode.getFirstChildNode();
 
         while (child != null) {
+            if (child.getPsi() instanceof PsiErrorElement) {
+                return new ArrayList<>();
+            }
+
             if (child.getElementType() != ReconTypes.WHITE_SPACE && child.getElementType() != ReconTypes.NL && child.getElementType() != ReconTypes.SP) {
                 Block block = new ReconBlock(child, Wrap.createWrap(WrapType.NONE, false), null,
                         spacingBuilder);

@@ -3,6 +3,7 @@ package org.swim.language;
 
 import com.intellij.lang.Language;
 import com.intellij.psi.codeStyle.CodeStyleSettingsCustomizable;
+import com.intellij.psi.codeStyle.CommonCodeStyleSettings;
 import com.intellij.psi.codeStyle.LanguageCodeStyleSettingsProvider;
 import org.jetbrains.annotations.NotNull;
 
@@ -22,8 +23,12 @@ public class ReconLanguageCodeStyleSettingsProvider extends LanguageCodeStyleSet
             consumer.moveStandardOption("SPACE_AFTER_COLON", "Spacing");
 
             consumer.showStandardOptions("SPACE_BEFORE_CLASS_LBRACE");
-            consumer.renameStandardOption("SPACE_BEFORE_CLASS_LBRACE", "Before opening brace");
+            consumer.renameStandardOption("SPACE_BEFORE_CLASS_LBRACE", "After attribute");
             consumer.moveStandardOption("SPACE_BEFORE_CLASS_LBRACE", "Spacing");
+
+            consumer.showStandardOptions("SPACE_BEFORE_COLON");
+            consumer.renameStandardOption("SPACE_BEFORE_COLON", "Before colon");
+            consumer.moveStandardOption("SPACE_BEFORE_COLON", "Spacing");
         } else if (settingsType == SettingsType.BLANK_LINES_SETTINGS) {
             consumer.showStandardOptions("BLANK_LINES_AFTER_CLASS_HEADER");
             consumer.renameStandardOption("BLANK_LINES_AFTER_CLASS_HEADER", "After opening brace");
@@ -34,6 +39,14 @@ public class ReconLanguageCodeStyleSettingsProvider extends LanguageCodeStyleSet
             consumer.showStandardOptions("BLANK_LINES_AROUND_FIELD");
             consumer.renameStandardOption("BLANK_LINES_AROUND_FIELD", "Between slots");
         }
+    }
+
+    @Override
+    protected void customizeDefaults(@NotNull CommonCodeStyleSettings commonSettings, @NotNull CommonCodeStyleSettings.IndentOptions indentOptions) {
+        commonSettings.KEEP_BLANK_LINES_IN_CODE = 0;
+        commonSettings.KEEP_BLANK_LINES_IN_DECLARATIONS = 0;
+        commonSettings.KEEP_LINE_BREAKS = false;
+        commonSettings.SPACE_BEFORE_COLON = false;
     }
 
     @Override

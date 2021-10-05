@@ -13,12 +13,16 @@ public class ReconFormattingModelBuilder implements FormattingModelBuilder {
 
     private static SpacingBuilder createSpaceBuilder(CodeStyleSettings settings) {
 
-        SpacingBuilder builder = new SpacingBuilder(settings, ReconLanguage.INSTANCE)
-                .after(ReconTypes.ATTRIBUTE)
-                .spaceIf(settings.getCommonSettings(ReconLanguage.INSTANCE.getID()).SPACE_BEFORE_CLASS_LBRACE)
-                .after(ReconTypes.COL)
+        SpacingBuilder builder = new SpacingBuilder(settings, ReconLanguage.INSTANCE);
+
+        builder.before(ReconTypes.COL)
+                .spaceIf(settings.getCommonSettings(ReconLanguage.INSTANCE.getID()).SPACE_BEFORE_COLON);
+
+        builder.after(ReconTypes.COL)
                 .spaceIf(settings.getCommonSettings(ReconLanguage.INSTANCE.getID()).SPACE_AFTER_COLON);
 
+        builder.before(ReconTypes.BLOCK_ITEM)
+                .spaceIf(settings.getCommonSettings(ReconLanguage.INSTANCE.getID()).SPACE_BEFORE_CLASS_LBRACE);
 
         int blank_lines_after_opening_brack = settings.getCommonSettings(ReconLanguage.INSTANCE.getID()).BLANK_LINES_AFTER_CLASS_HEADER;
         int blank_lines_before_closing_brack = settings.getCommonSettings(ReconLanguage.INSTANCE.getID()).BLANK_LINES_BEFORE_CLASS_END;
@@ -48,6 +52,9 @@ public class ReconFormattingModelBuilder implements FormattingModelBuilder {
                     .blankLines(blank_lines_between_slots);
         }
 
+        builder.before(ReconTypes.SEP).spaces(0);
+        builder.before(ReconTypes.SLOTS).blankLines(0);
+
         return builder;
     }
 
@@ -56,8 +63,6 @@ public class ReconFormattingModelBuilder implements FormattingModelBuilder {
     public FormattingModel createModel(@NotNull FormattingContext formattingContext) {
 
         CodeStyleSettings settings = formattingContext.getCodeStyleSettings();
-        settings.getCommonSettings(ReconLanguage.INSTANCE.getID()).KEEP_BLANK_LINES_IN_CODE = 0;
-        settings.getCommonSettings(ReconLanguage.INSTANCE.getID()).KEEP_BLANK_LINES_IN_DECLARATIONS = 0;
 
         return FormattingModelProvider
                 .createFormattingModelForPsiFile(formattingContext.getContainingFile(),
