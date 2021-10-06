@@ -1,5 +1,3 @@
-// Copyright 2000-2020 JetBrains s.r.o. and other contributors. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
-
 package org.swim.language;
 
 import com.intellij.openapi.editor.colors.TextAttributesKey;
@@ -13,7 +11,7 @@ import org.jetbrains.annotations.Nullable;
 import javax.swing.*;
 import java.util.Map;
 
-public class ReconColorSettingPage implements ColorSettingsPage {
+public class ReconColorSettingsPage implements ColorSettingsPage {
 
     private static final AttributesDescriptor[] DESCRIPTORS = new AttributesDescriptor[]{
             new AttributesDescriptor("Attribute", ReconSyntaxHighlighter.ATTR),

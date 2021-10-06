@@ -37,7 +37,6 @@ public class ReconCodeStyleSettingsProvider extends CodeStyleSettingsProvider {
 
         @Override
         protected void initTabs(CodeStyleSettings settings) {
-            addIndentOptionsTab(settings);
             addSpacesTab(settings);
             addBlankLinesTab(settings);
         }

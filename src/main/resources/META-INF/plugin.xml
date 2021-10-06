@@ -1,6 +1,6 @@
 <idea-plugin>
-    <id>org.example.intellij-recon</id>
-    <name>IntelliJ-Recon</name>
+    <id>org.swim.recon</id>
+    <name>Recon</name>
     <vendor email="developers info@swim.ai" url="https://www.swim.ai/">Swim.AI</vendor>
 
     <description><![CDATA[Recon language support.
@@ -21,7 +21,7 @@
         <lang.commenter language="Recon" implementationClass="org.swim.language.ReconCommenter"/>
         <lang.braceMatcher language="Recon" implementationClass="org.swim.language.ReconPairedBraceMatcher"/>
         <lang.formatter language="Recon" implementationClass="org.swim.language.ReconFormattingModelBuilder"/>
-        <colorSettingsPage implementation="org.swim.language.ReconColorSettingPage"/>
+        <colorSettingsPage implementation="org.swim.language.ReconColorSettingsPage"/>
         <lang.foldingBuilder language="Recon" implementationClass="org.swim.language.ReconFoldingBuilder"/>
         <codeStyleSettingsProvider implementation="org.swim.language.ReconCodeStyleSettingsProvider"/>
         <langCodeStyleSettingsProvider
