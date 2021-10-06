@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>org.swim.recon</id>
     <name>Recon</name>
-    <vendor email="developers info@swim.ai" url="https://www.swim.ai/">Swim.AI</vendor>
+    <vendor email="info@swim.ai" url="https://www.swim.ai/">Swim.AI</vendor>
 
     <description><![CDATA[Recon language support.
                     Recon is object notation with attributes, like if JSON and XML had a baby.]]>
