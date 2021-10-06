@@ -3,7 +3,7 @@ package org.swim.language.psi;
 import com.intellij.extapi.psi.PsiFileBase;
 import com.intellij.openapi.fileTypes.FileType;
 import com.intellij.psi.FileViewProvider;
-import org.swim.language.ReconFileType;
+import org.swim.misc.ReconFileType;
 import org.swim.language.ReconLanguage;
 import org.jetbrains.annotations.NotNull;
 

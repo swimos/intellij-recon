@@ -1,8 +1,9 @@
-package org.swim.language;
+package org.swim.misc;
 
 import com.intellij.openapi.fileTypes.LanguageFileType;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.swim.language.ReconLanguage;
 
 import javax.swing.Icon;
 

@@ -1,10 +1,11 @@
-package org.swim.language;
+package org.swim.settings;
 
 import com.intellij.lang.Language;
 import com.intellij.psi.codeStyle.CodeStyleSettingsCustomizable;
 import com.intellij.psi.codeStyle.CommonCodeStyleSettings;
 import com.intellij.psi.codeStyle.LanguageCodeStyleSettingsProvider;
 import org.jetbrains.annotations.NotNull;
+import org.swim.language.ReconLanguage;
 
 public class ReconLanguageCodeStyleSettingsProvider extends LanguageCodeStyleSettingsProvider {
 

@@ -1,4 +1,4 @@
-package org.swim.language;
+package org.swim.settings;
 
 import com.intellij.application.options.CodeStyleAbstractConfigurable;
 import com.intellij.application.options.CodeStyleAbstractPanel;
@@ -9,6 +9,7 @@ import com.intellij.psi.codeStyle.CodeStyleSettingsProvider;
 import com.intellij.psi.codeStyle.CustomCodeStyleSettings;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.swim.language.ReconLanguage;
 
 public class ReconCodeStyleSettingsProvider extends CodeStyleSettingsProvider {
 

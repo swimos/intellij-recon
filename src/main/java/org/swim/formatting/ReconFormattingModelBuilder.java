@@ -1,10 +1,11 @@
-package org.swim.language;
+package org.swim.formatting;
 
 import com.intellij.formatting.*;
 import com.intellij.lang.ASTNode;
 import com.intellij.openapi.util.TextRange;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.codeStyle.CodeStyleSettings;
+import org.swim.language.ReconLanguage;
 import org.swim.language.psi.ReconTypes;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -16,6 +17,7 @@ public class ReconFormattingModelBuilder implements FormattingModelBuilder {
         SpacingBuilder builder = new SpacingBuilder(settings, ReconLanguage.INSTANCE);
 
         builder.after(ReconTypes.COMMENT).lineBreakInCode();
+        builder.before(ReconTypes.COMMENT).blankLines(0);
 
         builder.before(ReconTypes.COL)
                 .spaceIf(settings.getCommonSettings(ReconLanguage.INSTANCE.getID()).SPACE_BEFORE_COLON);

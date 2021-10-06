@@ -12,20 +12,20 @@
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <fileType name="Recon file" implementationClass="org.swim.language.ReconFileType"
+        <fileType name="Recon file" implementationClass="org.swim.misc.ReconFileType"
                   fieldName="INSTANCE" language="Recon" extensions="recon"/>
         <lang.parserDefinition language="Recon"
                                implementationClass="org.swim.language.ReconParserDefinition"/>
         <lang.syntaxHighlighterFactory language="Recon"
-                                       implementationClass="org.swim.language.ReconSyntaxHighlighterFactory"/>
-        <lang.commenter language="Recon" implementationClass="org.swim.language.ReconCommenter"/>
-        <lang.braceMatcher language="Recon" implementationClass="org.swim.language.ReconPairedBraceMatcher"/>
-        <lang.formatter language="Recon" implementationClass="org.swim.language.ReconFormattingModelBuilder"/>
-        <colorSettingsPage implementation="org.swim.language.ReconColorSettingsPage"/>
-        <lang.foldingBuilder language="Recon" implementationClass="org.swim.language.ReconFoldingBuilder"/>
-        <codeStyleSettingsProvider implementation="org.swim.language.ReconCodeStyleSettingsProvider"/>
+                                       implementationClass="org.swim.color.ReconSyntaxHighlighterFactory"/>
+        <lang.commenter language="Recon" implementationClass="org.swim.misc.ReconCommenter"/>
+        <lang.braceMatcher language="Recon" implementationClass="org.swim.misc.ReconPairedBraceMatcher"/>
+        <lang.formatter language="Recon" implementationClass="org.swim.formatting.ReconFormattingModelBuilder"/>
+        <colorSettingsPage implementation="org.swim.settings.ReconColorSettingsPage"/>
+        <lang.foldingBuilder language="Recon" implementationClass="org.swim.misc.ReconFoldingBuilder"/>
+        <codeStyleSettingsProvider implementation="org.swim.settings.ReconCodeStyleSettingsProvider"/>
         <langCodeStyleSettingsProvider
-                implementation="org.swim.language.ReconLanguageCodeStyleSettingsProvider"/>
+                implementation="org.swim.settings.ReconLanguageCodeStyleSettingsProvider"/>
     </extensions>
 
     <actions>

@@ -1,4 +1,4 @@
-package org.swim.language;
+package org.swim.misc;
 
 import com.intellij.lang.Commenter;
 import org.jetbrains.annotations.Nullable;

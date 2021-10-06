@@ -1,4 +1,4 @@
-package org.swim.language;
+package org.swim.settings;
 
 import com.intellij.psi.codeStyle.CodeStyleSettings;
 import com.intellij.psi.codeStyle.CustomCodeStyleSettings;

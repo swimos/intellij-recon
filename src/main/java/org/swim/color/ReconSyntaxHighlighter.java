@@ -1,4 +1,4 @@
-package org.swim.language;
+package org.swim.color;
 
 import com.intellij.lexer.Lexer;
 import com.intellij.openapi.editor.DefaultLanguageHighlighterColors;
@@ -7,6 +7,7 @@ import com.intellij.openapi.editor.colors.TextAttributesKey;
 import com.intellij.openapi.fileTypes.SyntaxHighlighterBase;
 import com.intellij.psi.TokenType;
 import com.intellij.psi.tree.IElementType;
+import org.swim.language.ReconLexerAdapter;
 import org.swim.language.psi.ReconTypes;
 import org.jetbrains.annotations.NotNull;
 

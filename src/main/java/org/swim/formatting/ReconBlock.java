@@ -1,4 +1,4 @@
-package org.swim.language;
+package org.swim.formatting;
 
 import com.intellij.formatting.*;
 import com.intellij.lang.ASTNode;

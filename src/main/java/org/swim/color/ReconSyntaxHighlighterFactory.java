@@ -1,4 +1,4 @@
-package org.swim.language;
+package org.swim.color;
 
 import com.intellij.openapi.fileTypes.SyntaxHighlighter;
 import com.intellij.openapi.fileTypes.SyntaxHighlighterFactory;
