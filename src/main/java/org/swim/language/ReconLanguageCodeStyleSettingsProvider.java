@@ -29,6 +29,10 @@ public class ReconLanguageCodeStyleSettingsProvider extends LanguageCodeStyleSet
             consumer.showStandardOptions("SPACE_BEFORE_COLON");
             consumer.renameStandardOption("SPACE_BEFORE_COLON", "Before colon");
             consumer.moveStandardOption("SPACE_BEFORE_COLON", "Spacing");
+
+            consumer.showStandardOptions("SPACE_AFTER_COMMA");
+            consumer.renameStandardOption("SPACE_AFTER_COMMA", "After comma");
+            consumer.moveStandardOption("SPACE_AFTER_COMMA", "Spacing");
         } else if (settingsType == SettingsType.BLANK_LINES_SETTINGS) {
             consumer.showStandardOptions("BLANK_LINES_BEFORE_METHOD_BODY");
             consumer.renameStandardOption("BLANK_LINES_BEFORE_METHOD_BODY", "Number of spaces");
@@ -38,9 +42,6 @@ public class ReconLanguageCodeStyleSettingsProvider extends LanguageCodeStyleSet
 
             consumer.showStandardOptions("BLANK_LINES_BEFORE_CLASS_END");
             consumer.renameStandardOption("BLANK_LINES_BEFORE_CLASS_END", "Before closing brace");
-
-            consumer.showStandardOptions("BLANK_LINES_AROUND_FIELD");
-            consumer.renameStandardOption("BLANK_LINES_AROUND_FIELD", "Between slots");
         }
     }
 
@@ -51,12 +52,15 @@ public class ReconLanguageCodeStyleSettingsProvider extends LanguageCodeStyleSet
         commonSettings.KEEP_BLANK_LINES_IN_DECLARATIONS = 0;
         commonSettings.KEEP_LINE_BREAKS = false;
         commonSettings.SPACE_BEFORE_COLON = false;
+        commonSettings.SPACE_AFTER_COMMA = true;
+        commonSettings.SPACE_AFTER_COLON = true;
+        commonSettings.SPACE_BEFORE_CLASS_LBRACE = true;
     }
 
     @Override
     public String getCodeSample(@NotNull SettingsType settingsType) {
         return "# This is a comment\n" +
-                "@config{@client{buffer_size:5,on_invalid:\"ignore\",data:%AA==,started:true}}";
+                "@config(type:\"client\",version:1){@client{buffer_size:5,on_invalid:\"ignore\",data:%AA==,started:true}}";
     }
 
 }

@@ -43,7 +43,7 @@ public class ReconColorSettingPage implements ColorSettingsPage {
     @Override
     public String getDemoText() {
         return "# This is a comment\n" +
-                "@config {\n" +
+                "@config(type: \"client\", version: 1) {\n" +
                 "   @client {\n" +
                 "       buffer_size: 5,\n" +
                 "       on_invalid: \"ignore\",\n" +
