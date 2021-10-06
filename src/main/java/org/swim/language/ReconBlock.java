@@ -14,11 +14,13 @@ import java.util.List;
 public class ReconBlock extends AbstractBlock {
 
     private final SpacingBuilder spacingBuilder;
+    private final Integer spaces;
 
     protected ReconBlock(@NotNull ASTNode node, @Nullable Wrap wrap, @Nullable Alignment alignment,
-                         SpacingBuilder spacingBuilder) {
+                         SpacingBuilder spacingBuilder, Integer spaces) {
         super(node, wrap, alignment);
         this.spacingBuilder = spacingBuilder;
+        this.spaces = spaces;
     }
 
     @Override
@@ -33,7 +35,7 @@ public class ReconBlock extends AbstractBlock {
 
             if (child.getElementType() != ReconTypes.WHITE_SPACE && child.getElementType() != ReconTypes.NL && child.getElementType() != ReconTypes.SP) {
                 Block block = new ReconBlock(child, Wrap.createWrap(WrapType.NONE, false), null,
-                        spacingBuilder);
+                        spacingBuilder, this.spaces);
                 blocks.add(block);
             }
             child = child.getTreeNext();
@@ -44,7 +46,7 @@ public class ReconBlock extends AbstractBlock {
     @Override
     public Indent getIndent() {
         if (myNode.getElementType() == ReconTypes.BLOCK) {
-            return Indent.getSpaceIndent(4);
+            return Indent.getSpaceIndent(this.spaces);
         } else {
             return Indent.getSpaceIndent(0);
         }

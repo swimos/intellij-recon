@@ -30,6 +30,9 @@ public class ReconLanguageCodeStyleSettingsProvider extends LanguageCodeStyleSet
             consumer.renameStandardOption("SPACE_BEFORE_COLON", "Before colon");
             consumer.moveStandardOption("SPACE_BEFORE_COLON", "Spacing");
         } else if (settingsType == SettingsType.BLANK_LINES_SETTINGS) {
+            consumer.showStandardOptions("BLANK_LINES_BEFORE_METHOD_BODY");
+            consumer.renameStandardOption("BLANK_LINES_BEFORE_METHOD_BODY", "Number of spaces");
+
             consumer.showStandardOptions("BLANK_LINES_AFTER_CLASS_HEADER");
             consumer.renameStandardOption("BLANK_LINES_AFTER_CLASS_HEADER", "After opening brace");
 
@@ -43,6 +46,7 @@ public class ReconLanguageCodeStyleSettingsProvider extends LanguageCodeStyleSet
 
     @Override
     protected void customizeDefaults(@NotNull CommonCodeStyleSettings commonSettings, @NotNull CommonCodeStyleSettings.IndentOptions indentOptions) {
+        commonSettings.BLANK_LINES_BEFORE_METHOD_BODY = 4;
         commonSettings.KEEP_BLANK_LINES_IN_CODE = 0;
         commonSettings.KEEP_BLANK_LINES_IN_DECLARATIONS = 0;
         commonSettings.KEEP_LINE_BREAKS = false;
