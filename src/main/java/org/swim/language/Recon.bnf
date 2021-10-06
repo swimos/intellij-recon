@@ -21,7 +21,11 @@ primitive ::= DATA | IDENT | STRING | NUM | BOOL
 
 literal ::= record | primitive
 
-attribute ::= ATTR whiteSpace* (OPEN_BRACK block? CLOSE_BRACK)?
+attribute ::= ATTR whiteSpace* (OPEN_BRACK attr_block? CLOSE_BRACK)?
+
+attr_block ::= whiteSpace* attr_slots whiteSpace*
+
+attr_slots ::= slot SP* (((whiteSpace* SEP) | NL) whiteSpace* attr_slots?)?
 
 slots ::= slot SP* (((whiteSpace* SEP) | NL) whiteSpace* slots?)?
 

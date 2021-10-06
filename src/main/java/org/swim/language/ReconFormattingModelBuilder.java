@@ -28,6 +28,7 @@ public class ReconFormattingModelBuilder implements FormattingModelBuilder {
 
         int blank_lines_after_opening_brack = settings.getCommonSettings(ReconLanguage.INSTANCE.getID()).BLANK_LINES_AFTER_CLASS_HEADER;
         int blank_lines_before_closing_brack = settings.getCommonSettings(ReconLanguage.INSTANCE.getID()).BLANK_LINES_BEFORE_CLASS_END;
+        //Todo remove
         int blank_lines_between_slots = settings.getCommonSettings(ReconLanguage.INSTANCE.getID()).BLANK_LINES_AROUND_FIELD;
 
         if (blank_lines_after_opening_brack == 0) {
@@ -46,6 +47,9 @@ public class ReconFormattingModelBuilder implements FormattingModelBuilder {
                     .blankLines(blank_lines_before_closing_brack);
         }
 
+        //Todo add setting
+        builder.before(ReconTypes.ATTR_SLOTS).spaces(1);
+
         if (blank_lines_between_slots == 0) {
             builder.after(ReconTypes.SEP)
                     .lineBreakInCode();
@@ -57,9 +61,9 @@ public class ReconFormattingModelBuilder implements FormattingModelBuilder {
         builder.before(ReconTypes.SEP).spaces(0);
         builder.before(ReconTypes.SLOTS).blankLines(0);
 
-        builder.after(ReconTypes.OPEN_BRACK).lineBreakInCode();
+        builder.after(ReconTypes.OPEN_BRACK).spaces(0);
         builder.before(ReconTypes.OPEN_BRACK).spaces(0);
-        builder.before(ReconTypes.CLOSE_BRACK).lineBreakInCode();
+        builder.before(ReconTypes.CLOSE_BRACK).spaces(0);
         builder.between(ReconTypes.ATTRIBUTE, ReconTypes.ATTRIBUTE).lineBreakInCode();
         builder.between(ReconTypes.ATTRIBUTE, ReconTypes.PRIMITIVE).lineBreakInCode();
 
