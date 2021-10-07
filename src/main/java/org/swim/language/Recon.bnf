@@ -25,11 +25,13 @@ attribute ::= ATTR whiteSpace* (OPEN_BRACK attr_block? CLOSE_BRACK)?
 
 attr_block ::= whiteSpace* attr_slots whiteSpace*
 
-attr_slots ::= slot SP* (((whiteSpace* SEP) | NL) whiteSpace* attr_slots?)?
+attr_slots ::= (empty_slot | slot) SP* (((whiteSpace* SEP) | NL) whiteSpace* attr_slots?)?
 
-slots ::= slot SP* (((whiteSpace* SEP) | NL) whiteSpace* slots?)?
+slots ::= (empty_slot | slot) SP* (((whiteSpace* SEP) | NL) whiteSpace* slots?)?
 
 slot ::= blockItem (whiteSpace* COL whiteSpace* blockItem)?
+
+empty_slot ::= blockItem whiteSpace* COL SP* (NL | SEP) whiteSpace* slots?
 
 block ::= whiteSpace* slots whiteSpace*
 

@@ -16,8 +16,10 @@ public class ReconFormattingModelBuilder implements FormattingModelBuilder {
 
         SpacingBuilder builder = new SpacingBuilder(settings, ReconLanguage.INSTANCE);
 
-        builder.after(ReconTypes.COMMENT).lineBreakInCode();
+        builder.beforeInside(ReconTypes.SLOTS, ReconTypes.EMPTY_SLOT).lineBreakInCode();
         builder.before(ReconTypes.COMMENT).blankLines(0);
+
+        builder.after(ReconTypes.EMPTY_SLOT).lineBreakInCode();
 
         builder.before(ReconTypes.COL)
                 .spaceIf(settings.getCommonSettings(ReconLanguage.INSTANCE.getID()).SPACE_BEFORE_COLON);

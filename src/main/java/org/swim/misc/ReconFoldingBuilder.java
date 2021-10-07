@@ -26,10 +26,16 @@ public class ReconFoldingBuilder extends FoldingBuilderEx implements DumbAware {
                 PsiTreeUtil.findChildrenOfType(root, ReconRecordImpl.class);
 
         for (final ReconRecordImpl reconRecord : reconRecords) {
-            descriptors.add(new FoldingDescriptor(reconRecord.getNode(),
-                    new TextRange(reconRecord.getTextRange().getStartOffset() + 1,
-                            reconRecord.getTextRange().getEndOffset() - 1),
-                    null));
+
+            int start = reconRecord.getTextRange().getStartOffset() + 1;
+            int end = reconRecord.getTextRange().getEndOffset() - 1;
+
+            if (end > start) {
+                descriptors.add(new FoldingDescriptor(reconRecord.getNode(),
+                        new TextRange(start,
+                                end),
+                        null));
+            }
         }
 
         return descriptors.toArray(new FoldingDescriptor[descriptors.size()]);
