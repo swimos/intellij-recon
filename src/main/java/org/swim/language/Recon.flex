@@ -35,6 +35,7 @@ NUM = "-"? (([1-9] [0-9]*) | [0-9]) ("." [0-9]+)? (("E" | "e") ("+" | "-")? [0-9
 BOOL = "true" | "false"
 COMMENT = "#" [^\r\n]*
 DATA = ({BASE_64_CHAR}{4})* ({BASE_64_CHAR} {BASE_64_CHAR} (({BASE_64_CHAR} "=") | ("=" "=")))?
+HEX = "0x" [0-9a-fA-F]+
 
 %%
 
@@ -48,6 +49,7 @@ DATA = ({BASE_64_CHAR}{4})* ({BASE_64_CHAR} {BASE_64_CHAR} (({BASE_64_CHAR} "=")
 <YYINITIAL> {STRING}                                        { yybegin(YYINITIAL); return ReconTypes.STRING; }
 <YYINITIAL> {IDENT}                                         { yybegin(YYINITIAL); return ReconTypes.IDENT; }
 <YYINITIAL> {NUM}                                           { yybegin(YYINITIAL); return ReconTypes.NUM; }
+<YYINITIAL> {HEX}                                           { yybegin(YYINITIAL); return ReconTypes.HEX; }
 <YYINITIAL> {COMMENT}                                       { yybegin(YYINITIAL); return ReconTypes.COMMENT; }
 <YYINITIAL> "%" {DATA}                                      { yybegin(YYINITIAL); return ReconTypes.DATA; }
 <YYINITIAL> "@" ({IDENT} | {STRING})                        { yybegin(YYINITIAL); return ReconTypes.ATTR; }

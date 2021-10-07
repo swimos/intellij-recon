@@ -22,6 +22,7 @@ public class ReconColorSettingsPage implements ColorSettingsPage {
             new AttributesDescriptor("Number", ReconSyntaxHighlighter.NUM),
             new AttributesDescriptor("Boolean", ReconSyntaxHighlighter.BOOL),
             new AttributesDescriptor("Operator", ReconSyntaxHighlighter.OPERATOR),
+            new AttributesDescriptor("Hex", ReconSyntaxHighlighter.HEX),
             new AttributesDescriptor("Data", ReconSyntaxHighlighter.DATA),
             new AttributesDescriptor("Comment", ReconSyntaxHighlighter.COMMENT),
             new AttributesDescriptor("Bad character", ReconSyntaxHighlighter.BAD_CHARACTER)
@@ -47,6 +48,7 @@ public class ReconColorSettingsPage implements ColorSettingsPage {
                 "   @client {\n" +
                 "       buffer_size: 5,\n" +
                 "       on_invalid: \"ignore\",\n" +
+                "       hex: 0xB3CEF912D48,\n" +
                 "       data: %AA==,\n" +
                 "       started: true\n" +
                 "   }\n" +

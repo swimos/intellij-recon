@@ -26,6 +26,8 @@ public class ReconSyntaxHighlighter extends SyntaxHighlighterBase {
             createTextAttributesKey("RECON_NUM", DefaultLanguageHighlighterColors.NUMBER);
     public static final TextAttributesKey COMMENT =
             createTextAttributesKey("RECON_COMMENT", DefaultLanguageHighlighterColors.LINE_COMMENT);
+    public static final TextAttributesKey HEX =
+            createTextAttributesKey("HEX", DefaultLanguageHighlighterColors.NUMBER);
     public static final TextAttributesKey DATA =
             createTextAttributesKey("RECON_DATA", DefaultLanguageHighlighterColors.NUMBER);
     public static final TextAttributesKey ATTR =
@@ -39,6 +41,7 @@ public class ReconSyntaxHighlighter extends SyntaxHighlighterBase {
     private static final TextAttributesKey[] IDENT_KEYS = new TextAttributesKey[]{IDENT};
     private static final TextAttributesKey[] NUM_KEYS = new TextAttributesKey[]{NUM};
     private static final TextAttributesKey[] COMMENT_KEYS = new TextAttributesKey[]{COMMENT};
+    private static final TextAttributesKey[] HEX_KEYS = new TextAttributesKey[]{HEX};
     private static final TextAttributesKey[] DATA_KEYS = new TextAttributesKey[]{DATA};
     private static final TextAttributesKey[] ATTR_KEYS = new TextAttributesKey[]{ATTR};
     private static final TextAttributesKey[] BAD_CHAR_KEYS = new TextAttributesKey[]{BAD_CHARACTER};
@@ -75,6 +78,8 @@ public class ReconSyntaxHighlighter extends SyntaxHighlighterBase {
             return NUM_KEYS;
         } else if (tokenType.equals(ReconTypes.COMMENT)) {
             return COMMENT_KEYS;
+        } else if (tokenType.equals(ReconTypes.HEX)) {
+            return HEX_KEYS;
         } else if (tokenType.equals(ReconTypes.DATA)) {
             return DATA_KEYS;
         } else if (tokenType.equals(ReconTypes.ATTR)) {

@@ -60,7 +60,7 @@ public class ReconLanguageCodeStyleSettingsProvider extends LanguageCodeStyleSet
     @Override
     public String getCodeSample(@NotNull SettingsType settingsType) {
         return "# This is a comment\n" +
-                "@config(type:\"client\",version:1){@client{buffer_size:5,on_invalid:\"ignore\",data:%AA==,started:true}}";
+                "@config(type:\"client\",version:1){@client{buffer_size:5,on_invalid:\"ignore\",hex:0xB3CEF912D48,data:%AA==,started:true}}";
     }
 
 }
