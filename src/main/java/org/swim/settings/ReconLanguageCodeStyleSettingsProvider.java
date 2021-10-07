@@ -55,6 +55,7 @@ public class ReconLanguageCodeStyleSettingsProvider extends LanguageCodeStyleSet
         commonSettings.SPACE_AFTER_COMMA = true;
         commonSettings.SPACE_AFTER_COLON = true;
         commonSettings.SPACE_BEFORE_CLASS_LBRACE = true;
+        indentOptions.CONTINUATION_INDENT_SIZE = 4;
     }
 
     @Override

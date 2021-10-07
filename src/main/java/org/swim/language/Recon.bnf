@@ -15,7 +15,9 @@
 
 reconFile ::= (slots | attribute | blockItem | literal | COMMENT | whiteSpace)*
 
-blockItem ::= literal SP* (attribute whiteSpace* blockItem?)? | attribute whiteSpace* ((attribute | primitive) whiteSpace*)* blockItem? | COMMENT
+blockItem ::= literal SP* (attribute operation? whiteSpace* blockItem?)? | attribute operation? whiteSpace* (((attribute operation?) | primitive) whiteSpace*)* blockItem? | COMMENT
+
+operation ::= whiteSpace* OPERATOR whiteSpace*
 
 primitive ::= DATA | IDENT | STRING | NUM | BOOL | HEX
 

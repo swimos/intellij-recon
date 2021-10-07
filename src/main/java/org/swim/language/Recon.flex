@@ -36,6 +36,7 @@ BOOL = "true" | "false"
 COMMENT = "#" [^\r\n]*
 DATA = ({BASE_64_CHAR}{4})* ({BASE_64_CHAR} {BASE_64_CHAR} (({BASE_64_CHAR} "=") | ("=" "=")))?
 HEX = "0x" [0-9a-fA-F]+
+OPERATOR = "=>" | "||" | "&&" | "|" | "^" | "&" | "<" | "<=" | "==" | "!=" | ">=" | ">"
 
 %%
 
@@ -50,6 +51,7 @@ HEX = "0x" [0-9a-fA-F]+
 <YYINITIAL> {IDENT}                                         { yybegin(YYINITIAL); return ReconTypes.IDENT; }
 <YYINITIAL> {NUM}                                           { yybegin(YYINITIAL); return ReconTypes.NUM; }
 <YYINITIAL> {HEX}                                           { yybegin(YYINITIAL); return ReconTypes.HEX; }
+<YYINITIAL> {OPERATOR}                                      { yybegin(YYINITIAL); return ReconTypes.OPERATOR; }
 <YYINITIAL> {COMMENT}                                       { yybegin(YYINITIAL); return ReconTypes.COMMENT; }
 <YYINITIAL> "%" {DATA}                                      { yybegin(YYINITIAL); return ReconTypes.DATA; }
 <YYINITIAL> "@" ({IDENT} | {STRING})                        { yybegin(YYINITIAL); return ReconTypes.ATTR; }

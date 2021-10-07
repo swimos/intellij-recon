@@ -21,6 +21,9 @@ public class ReconFormattingModelBuilder implements FormattingModelBuilder {
 
         builder.after(ReconTypes.EMPTY_SLOT).lineBreakInCode();
 
+        builder.before(ReconTypes.OPERATION).spaces(1);
+        builder.after(ReconTypes.OPERATION).spaces(1);
+
         builder.before(ReconTypes.COL)
                 .spaceIf(settings.getCommonSettings(ReconLanguage.INSTANCE.getID()).SPACE_BEFORE_COLON);
 
