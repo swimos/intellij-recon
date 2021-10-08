@@ -62,6 +62,8 @@ public class ReconFormattingModelBuilder implements FormattingModelBuilder {
         builder.before(ReconTypes.CLOSE_BRACK).spaces(0);
         builder.between(ReconTypes.ATTRIBUTE, ReconTypes.ATTRIBUTE).lineBreakInCode();
         builder.between(ReconTypes.ATTRIBUTE, ReconTypes.PRIMITIVE).lineBreakInCode();
+        builder.between(ReconTypes.LITERAL, ReconTypes.ATTRIBUTE).lineBreakInCode();
+        builder.between(ReconTypes.ATTRIBUTE, ReconTypes.RECORD).spaceIf(settings.getCommonSettings(ReconLanguage.INSTANCE.getID()).SPACE_BEFORE_CLASS_LBRACE);
 
         return builder;
     }

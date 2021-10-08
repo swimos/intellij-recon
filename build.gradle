@@ -23,7 +23,7 @@ dependencies {
 // See https://github.com/JetBrains/gradle-intellij-plugin/
 intellij {
     version '2021.2.2'
-    plugins  = ['PsiViewer:212-SNAPSHOT']
+    plugins = ['PsiViewer:212-SNAPSHOT', 'com.intellij.java']
 }
 patchPluginXml {
     changeNotes """
@@ -31,7 +31,8 @@ patchPluginXml {
     """
 }
 test {
-    useJUnitPlatform()
+    systemProperty "idea.home.path", System.getProperty("user.dir")
+
 }
 
 import org.jetbrains.grammarkit.tasks.*

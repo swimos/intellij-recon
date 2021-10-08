@@ -1,0 +1,32 @@
+@kernel(class: "swim.store.db.DbStoreKernel", optional: true)
+@kernel(class: "swim.meta.MetaKernel")
+@kernel(class: "swim.cellular.CellularUiRouter")
+@web(port: 9003) {
+    space: "cellular",
+    @websocket {
+        serverCompressionLevel: 0,
+        clientCompressionLevel: 0,
+    }
+}
+cellular: @fabric {
+    @plane(class: "swim.cellular.CellularPlane")
+    @node {
+        pattern: "/site/:id",
+        @agent(class: "swim.cellular.agent.SiteAgent")
+    }
+    @node {
+        uri: "/country/US/state/CA"
+        @agent(class: "swim.cellular.agent.RegionAgent") {
+            seed: "seed/country/US/state/CA.recon"
+        }
+        @agent(class: "swim.cellular.agent.RanAgent") {
+            seed: "seed/country/US/state/CA-sites.csv"
+        }
+    }
+    @node {
+        uri: "/country/US"
+        @agent(class: "swim.cellular.agent.RegionAgent") {
+            seed: "seed/country/US.recon"
+        }
+    }
+}

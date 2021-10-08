@@ -15,7 +15,7 @@
 
 reconFile ::= (slots | attribute | blockItem | literal | COMMENT | whiteSpace)*
 
-blockItem ::= literal SP* (attribute operation? whiteSpace* blockItem?)? | attribute operation? whiteSpace* (((attribute operation?) | primitive) whiteSpace*)* blockItem? | COMMENT
+blockItem ::= literal SP* (attribute operation? whiteSpace* blockItem?)? | attribute operation? SP* ((attribute operation?) SP*)* ((primitive !COL) | (blockItem !COL) | record)? | COMMENT
 
 operation ::= whiteSpace* OPERATOR whiteSpace*
 
@@ -37,6 +37,6 @@ empty_slot ::= blockItem whiteSpace* COL SP* (NL | SEP) whiteSpace* slots?
 
 block ::= whiteSpace* slots whiteSpace*
 
-record ::= OPEN_CRL_BRACK whiteSpace* block? whiteSpace* CLOSE_CRL_BRACK
+record ::= OPEN_CRL_BRACK block? whiteSpace* CLOSE_CRL_BRACK
 
 whiteSpace ::= NL | SP

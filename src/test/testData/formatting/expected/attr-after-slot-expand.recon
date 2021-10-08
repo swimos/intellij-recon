@@ -1,0 +1,4 @@
+warehouse: @fabric {
+    @plane(class: "swim.basic.WarehousePlane"),
+}
+@web(port: 9001)
