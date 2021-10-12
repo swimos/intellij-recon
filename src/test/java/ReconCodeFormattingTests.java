@@ -20,6 +20,7 @@ public class ReconCodeFormattingTests extends LightJavaCodeInsightFixtureTestCas
         tests.add("client-config-expand.recon");
         tests.add("extant-slots.recon");
         tests.add("rosa-expand.recon");
+        tests.add("slot-after-attr-collapse.recon");
         tests.add("slots-collapse-extant.recon");
         tests.add("tmforum-expand.recon");
         tests.add("trafficware-expand.recon");

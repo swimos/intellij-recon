@@ -13,9 +13,9 @@
   tokenTypeClass="org.swim.language.psi.ReconTokenType"
 }
 
-reconFile ::= (slots | attribute | blockItem | literal | COMMENT | whiteSpace)*
+reconFile ::= (attribute | record | slots | blockItem | literal | COMMENT | whiteSpace)*
 
-blockItem ::= literal SP* (attribute operation? whiteSpace* blockItem?)? | attribute operation? SP* ((attribute operation?) SP*)* ((primitive !COL) | (blockItem !COL) | record)? | COMMENT
+blockItem ::= literal SP* (attribute operation? whiteSpace* blockItem?)? | ((attribute operation?) SP*)+ ((primitive !COL) | (blockItem !COL) | record)? | COMMENT
 
 operation ::= whiteSpace* OPERATOR whiteSpace*
 
@@ -23,7 +23,7 @@ primitive ::= DATA | IDENT | STRING | NUM | BOOL | HEX
 
 literal ::= record | primitive
 
-attribute ::= ATTR whiteSpace* (OPEN_BRACK attr_block? CLOSE_BRACK)?
+attribute ::= ATTR SP* (whiteSpace* OPEN_BRACK attr_block? CLOSE_BRACK)?
 
 attr_block ::= whiteSpace* attr_slots whiteSpace*
 

@@ -127,10 +127,7 @@ cellular
 
     )
     @mesh {
-        @part
-
-
-        {
+        @part       {
             key
 
 
@@ -180,12 +177,7 @@ cellular
 
 
 
-        @part
-
-
-
-
-        {
+        @part        {
             key: partB
 
 
@@ -232,10 +224,7 @@ cellular
 
 
             : true,
-            @host
-
-
-            {
+            @host       {
 
 
 
