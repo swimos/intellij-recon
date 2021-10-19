@@ -9,7 +9,7 @@ apply plugin: 'org.jetbrains.grammarkit'
 sourceSets.main.java.srcDirs 'src/main/gen'
 
 group 'org.swim'
-version '1.0'
+version '1.0.1'
 
 repositories {
     mavenCentral()
@@ -25,11 +25,11 @@ intellij {
     version '2021.2.2'
     plugins = ['PsiViewer:212-SNAPSHOT', 'com.intellij.java']
 }
+
 patchPluginXml {
-    changeNotes """
-      Initial release.
-    """
+    sinceBuild '203'
 }
+
 test {
     systemProperty "idea.home.path", System.getProperty("user.dir")
 
