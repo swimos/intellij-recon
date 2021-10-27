@@ -34,7 +34,8 @@ public class ReconBlock extends AbstractBlock {
             }
 
             if (child.getElementType() != ReconTypes.WHITE_SPACE && child.getElementType() != ReconTypes.NL && child.getElementType() != ReconTypes.SP) {
-                Block block = new ReconBlock(child, Wrap.createWrap(WrapType.NONE, false), null,
+
+                Block block = new ReconBlock(child, Wrap.createWrap(WrapType.NONE, false), createReconAlignment(child, myNode.getTreeNext()),
                         spacingBuilder, this.spaces);
                 blocks.add(block);
             }
@@ -63,4 +64,13 @@ public class ReconBlock extends AbstractBlock {
         return myNode.getFirstChildNode() == null;
     }
 
+    private Alignment createReconAlignment(ASTNode child, ASTNode next) {
+        if (child.getElementType() == ReconTypes.SLOT) {
+            return Alignment.createAlignment();
+        }
+        if (myNode.getElementType() == ReconTypes.TOP_LEVEL_ITEM && next != null && next.getElementType() == ReconTypes.TOP_LEVEL_ITEM) {
+            return Alignment.createAlignment();
+        }
+        return null;
+    }
 }
