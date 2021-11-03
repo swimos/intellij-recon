@@ -1,0 +1,1 @@
+predicate: (@node("/country/:id") || @node("/state/:country/:state") || @node("/agency/:country/:state/:id") || @node("/vehicle/:country/:state/:agency/:id")) && @hash(0x00000000, 0x7fffffff)

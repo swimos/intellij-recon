@@ -18,8 +18,7 @@ public class ReconFormattingModelBuilder implements FormattingModelBuilder {
 
         builder.beforeInside(ReconTypes.SLOTS, ReconTypes.EMPTY_SLOT).lineBreakInCode();
         builder.before(ReconTypes.COMMENT).blankLines(0);
-
-        builder.after(ReconTypes.EMPTY_SLOT).lineBreakInCode();
+        builder.after(ReconTypes.COMMENT).lineBreakInCode();
 
         builder.before(ReconTypes.OPERATION).spaces(1);
         builder.after(ReconTypes.OPERATION).spaces(1);

@@ -34,7 +34,7 @@ public class ReconBlock extends AbstractBlock {
             }
 
             if (child.getElementType() != ReconTypes.WHITE_SPACE && child.getElementType() != ReconTypes.NL && child.getElementType() != ReconTypes.SP) {
-                Block block = new ReconBlock(child, Wrap.createWrap(WrapType.NONE, false), null,
+                Block block = new ReconBlock(child, Wrap.createWrap(WrapType.NONE, false), createReconAlignment(child),
                         spacingBuilder, this.spaces);
                 blocks.add(block);
             }
@@ -63,4 +63,45 @@ public class ReconBlock extends AbstractBlock {
         return myNode.getFirstChildNode() == null;
     }
 
+    private boolean isNotAttributeRecord(@NotNull ASTNode node) {
+        if (node.getElementType() == ReconTypes.RECORD) {
+            ASTNode prev = node.getTreePrev();
+
+            while (node.getTreePrev() != null) {
+                if (prev.getElementType() == ReconTypes.ATTRIBUTE) {
+                    return false;
+                }
+                if (prev.getElementType() == ReconTypes.WHITE_SPACE) {
+                    prev = prev.getTreePrev();
+                } else {
+                    return true;
+                }
+
+            }
+        }
+
+        return true;
+
+    }
+
+    private boolean isTopLevelNode(@NotNull ASTNode node) {
+        return node.getTreeParent() != null && node.getTreeParent().getTreeParent() == null;
+    }
+
+    private @Nullable Alignment createReconAlignment(@NotNull ASTNode node) {
+
+        if (node.getElementType() == ReconTypes.SLOT) {
+            return Alignment.createAlignment();
+        }
+
+        if (node.getElementType() == ReconTypes.EMPTY_SLOT) {
+            return Alignment.createAlignment();
+        }
+
+        if (isTopLevelNode(node) && isNotAttributeRecord(node)) {
+            return Alignment.createAlignment();
+        }
+
+        return null;
+    }
 }

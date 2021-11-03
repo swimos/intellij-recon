@@ -13,9 +13,12 @@
   tokenTypeClass="org.swim.language.psi.ReconTokenType"
 }
 
-reconFile ::= (attribute | record | slots | blockItem | literal | COMMENT | whiteSpace)*
+reconFile ::= (attribute | record | slots | blockItem | literal | operation | COMMENT | whiteSpace)*
 
-blockItem ::= literal SP* (attribute operation? whiteSpace* blockItem?)? | ((attribute operation?) SP*)+ ((primitive !COL) | (blockItem !COL) | record)? | COMMENT
+blockItem ::= OPEN_BRACK? SP* (literal SP* (attribute SP* CLOSE_BRACK? operation? whiteSpace* blockItem?)?
+            | ((attribute SP* CLOSE_BRACK? operation?) SP*)+ ((primitive !COL)
+            | (blockItem !COL) | record)?)
+            | COMMENT
 
 operation ::= whiteSpace* OPERATOR whiteSpace*
 
@@ -27,13 +30,13 @@ attribute ::= ATTR SP* (whiteSpace* OPEN_BRACK attr_block? CLOSE_BRACK)?
 
 attr_block ::= whiteSpace* attr_slots whiteSpace*
 
-attr_slots ::= (empty_slot | slot) SP* (((whiteSpace* SEP) | NL) whiteSpace* attr_slots?)?
+attr_slots ::= (empty_slot SP* (NL | SEP) whiteSpace* attr_slots?) | (slot SP* (((whiteSpace* SEP) | NL) whiteSpace* attr_slots?)?)
 
-slots ::= (empty_slot | slot) SP* (((whiteSpace* SEP) | NL) whiteSpace* slots?)?
+slots ::= (empty_slot SP* (NL | SEP) whiteSpace* slots?) | (slot SP* (((whiteSpace* SEP) | NL) whiteSpace* slots?)?)
 
 slot ::= blockItem (whiteSpace* COL whiteSpace* blockItem)?
 
-empty_slot ::= blockItem whiteSpace* COL SP* (NL | SEP) whiteSpace* slots?
+empty_slot ::= blockItem whiteSpace* COL
 
 block ::= whiteSpace* slots whiteSpace*
 
