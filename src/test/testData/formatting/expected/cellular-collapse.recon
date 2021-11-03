@@ -28,8 +28,8 @@ cellular: @fabric {
             }
         }
         @part {
-            key: ,
-            predicate: ,
+            key:,
+            predicate:,
             gateway: true,
             @host {
                 primary: true

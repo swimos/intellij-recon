@@ -1,0 +1,87 @@
+# Server A
+@kernel(class: 'swim.store.db.DbStoreKernel', optional: true)
+@kernel(class: "swim.meta.MetaKernel", optional: true)
+@kernel(class: "swim.cluster.ClusterKernel", optional: true)
+transit: @fabric {
+    @plane(class: "swim.transit.TransitPlane")
+    @mesh {
+        @part {
+            key: partA
+            predicate: (@node("/country/:id") || @node("/state/:country/:state") || @node("/agency/:country/:state/:id") || @node("/vehicle/:country/:state/:agency/:id")) && @hash(0x00000000, 0x7fffffff)
+            @host {
+                #uri: "warp://localhost:9008"
+                primary: true
+            }
+            #@host {
+            #  uri: "warp://localhost:9009"
+            #  primary: false
+            #}
+        }
+        @part {
+            key: partB
+            predicate: (@node("/country/:id") || @node("/state/:country/:state") || @node("/agency/:country/:state/:id") || @node("/vehicle/:country/:state/:agency/:id")) && @hash(0x80000000, 0xffffffff)
+            #@host {
+            #  #uri: "warp://localhost:9008"
+            #  primary: false
+            #}
+            @host {
+                uri: "warp://localhost:9009"
+                primary: true
+            }
+        }
+    }
+    @node {
+        pattern: "/country/:id"
+        @agent(class: "swim.transit.agent.CountryAgent")
+    }
+    @node {
+        pattern: "/state/:country/:state"
+        @agent(class: "swim.transit.agent.StateAgent")
+    }
+    @node {
+        pattern: "/agency/:country/:state/:id"
+        @agent(class: "swim.transit.agent.AgencyAgent")
+    }
+    @node {
+        pattern: "/vehicle/:country/:state/:agency/:id"
+        @agent(class: "swim.transit.agent.VehicleAgent")
+    }
+    @node {
+        uri: "/hostMetrics"
+        @agent(class: "swim.transit.agent.HostMetricsAgent")
+    }
+    @node {
+        uri: "/eagerIndex"
+        @agent(class: "swim.transit.index.EagerIndexAgent")
+    }
+    #@node {
+    #  uri: "/startIndex"
+    #  @agent(class: "swim.transit.index.EagerMultiIndexAgent")
+    #}
+    #@node {
+    #  uri: "/twoIndex"
+    #  @agent(class: "swim.transit.index.EagerSingleIndexAgent")
+    #}
+    #@node {
+    #  uri: "/oneIndex"
+    #  @agent(class: "swim.transit.agent.LocalIndexAgent")
+    #}
+    #@node {
+    #  uri: "/twoIndex"
+    #  @agent(class: "swim.transit.agent.LocalIndexAgent")
+    #}
+    #@node {
+    #  uri: "/oneIndex"
+    #  @agent(class: "swim.transit.agent.LazyIndexAgent")
+    #}
+}
+@web(port: 9008) {
+    space: "transit"
+    documentRoot: "./ui"
+    @websocket {
+        serverCompressionLevel: 0
+        # -1 = default; 0 = off; 1-9 = deflate level
+        clientCompressionLevel: 0
+        # -1 = default; 0 = off; 1-9 = deflate level
+    }
+}

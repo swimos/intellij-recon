@@ -18,12 +18,16 @@ public class ReconCodeFormattingTests extends LightJavaCodeInsightFixtureTestCas
         tests.add("cellular-expand.recon");
         tests.add("client-config-collapse.recon");
         tests.add("client-config-expand.recon");
+        tests.add("comment-collapse.recon");
         tests.add("extant-slots.recon");
+        tests.add("operations-collapse.recon");
         tests.add("rosa-expand.recon");
         tests.add("slot-after-attr-collapse.recon");
         tests.add("slots-collapse-extant.recon");
         tests.add("tmforum-expand.recon");
         tests.add("trafficware-expand.recon");
+        tests.add("transit-collapse.recon");
+        tests.add("transit-expand.recon");
         tests.add("warehouse-expand.recon");
 
         for (String test : tests) {

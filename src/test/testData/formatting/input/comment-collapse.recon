@@ -1,0 +1,30 @@
+# Server A
+
+
+
+
+
+
+
+
+
+@kernel(class: 'swim.store.db.DbStoreKernel', optional: true)
+
+
+
+
+
+
+# Server C
+
+
+
+
+
+@kernel(class: 'swim.reflect.ReflectKernel', optional: true)
+
+
+
+
+
+# Server B
