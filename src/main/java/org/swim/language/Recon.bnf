@@ -40,6 +40,6 @@ empty_slot ::= blockItem whiteSpace* COL
 
 block ::= whiteSpace* slots whiteSpace*
 
-record ::= OPEN_CRL_BRACK block? whiteSpace* CLOSE_CRL_BRACK
+record ::= whiteSpace* OPEN_CRL_BRACK block? whiteSpace* CLOSE_CRL_BRACK
 
 whiteSpace ::= NL | SP

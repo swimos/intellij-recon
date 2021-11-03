@@ -13,6 +13,7 @@ public class ReconCodeFormattingTests extends LightJavaCodeInsightFixtureTestCas
         tests.add("attr-after-slot-expand.recon");
         tests.add("attr-collapse.recon");
         tests.add("attr-expand.recon");
+        tests.add("attr-record-no-change.recon");
         tests.add("attr-spaces-between.recon");
         tests.add("cellular-collapse.recon");
         tests.add("cellular-expand.recon");
@@ -21,6 +22,7 @@ public class ReconCodeFormattingTests extends LightJavaCodeInsightFixtureTestCas
         tests.add("comment-collapse.recon");
         tests.add("extant-slots.recon");
         tests.add("operations-collapse.recon");
+        tests.add("record-after-literal.recon");
         tests.add("rosa-expand.recon");
         tests.add("slot-after-attr-collapse.recon");
         tests.add("slots-collapse-extant.recon");
