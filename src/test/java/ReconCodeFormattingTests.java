@@ -13,6 +13,9 @@ public class ReconCodeFormattingTests extends LightJavaCodeInsightFixtureTestCas
         tests.add("attr-after-slot-expand.recon");
         tests.add("attr-collapse.recon");
         tests.add("attr-expand.recon");
+        tests.add("attr-nested-body-collapse.recon");
+        tests.add("attr-nested-collapse.recon");
+        tests.add("attr-nested-format.recon");
         tests.add("attr-record-no-change.recon");
         tests.add("attr-spaces-between.recon");
         tests.add("cellular-collapse.recon");
