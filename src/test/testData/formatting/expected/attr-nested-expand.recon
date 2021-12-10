@@ -1,0 +1,5 @@
+@tag(@first @second(1) {
+    1,
+    name: 2,
+    true
+})

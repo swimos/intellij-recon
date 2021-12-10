@@ -108,11 +108,7 @@ optional
 
 
 
-cellular
-
-
-
-: @fabric {
+cellular:      @fabric {
     @plane(class
 
 
