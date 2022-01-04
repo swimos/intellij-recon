@@ -1,0 +1,11 @@
+arch: amd64
+
+language: java
+
+jdk:
+  - oraclejdk11
+
+script:
+  - java --version
+  - ./gradlew :generateAll
+  - ./gradlew :test

@@ -2,13 +2,14 @@ import com.intellij.openapi.command.WriteCommandAction;
 import com.intellij.psi.codeStyle.CodeStyleManager;
 import com.intellij.testFramework.fixtures.LightJavaCodeInsightFixtureTestCase;
 import com.intellij.util.containers.ContainerUtil;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ReconCodeFormattingTests extends LightJavaCodeInsightFixtureTestCase {
+    @Test
     public void testFormatting() {
-
         List<String> tests = new ArrayList<>();
         tests.add("attr-after-slot-expand.recon");
         tests.add("attr-collapse.recon");
