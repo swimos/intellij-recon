@@ -7,6 +7,10 @@ jdk:
 
 install: skip
 
+before_script:
+  - cd ${TRAVIS_BUILD_DIR}/intellij-recon
+  - chmod +x ./gradlew
+
 script:
   - java --version
   - ./gradlew :generateAll
