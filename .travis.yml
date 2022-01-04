@@ -5,10 +5,15 @@ language: java
 jdk:
   - oraclejdk11
 
+before_install:
+  - pwd
+  - ls -la
+  - chmod +x /.gradlew
+
 install: skip
 
 before_script:
-  - cd ${TRAVIS_BUILD_DIR}/intellij-recon
+  - cd intellij-recon
   - chmod +x ./gradlew
 
 script:
