@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>org.swim.recon</id>
     <name>Recon</name>
-    <vendor email="developers@swim.ai" url="https://www.swim.ai/">Swim.AI</vendor>
+    <vendor email="developers@swim.ai" url="https://www.swim.ai/">Swim</vendor>
 
     <description><![CDATA[Recon language support.
                     Recon is object notation with attributes, like if JSON and XML had a baby.]]>
@@ -26,6 +26,8 @@
         <codeStyleSettingsProvider implementation="org.swim.settings.ReconCodeStyleSettingsProvider"/>
         <langCodeStyleSettingsProvider
                 implementation="org.swim.settings.ReconLanguageCodeStyleSettingsProvider"/>
+        <annotator language="Recon" implementationClass="org.swim.annotations.ReconAnnotator"/>
+        <highlightErrorFilter implementation="org.swim.annotations.ReconHighlightErrorFilter"/>
     </extensions>
 
     <actions>

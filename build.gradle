@@ -14,7 +14,7 @@ apply plugin: 'org.jetbrains.grammarkit'
 sourceSets.main.java.srcDirs 'src/main/gen'
 
 group 'org.swim'
-version '1.2.0'
+version '1.2.1'
 
 repositories {
     mavenCentral()
@@ -27,7 +27,7 @@ dependencies {
 
 // See https://github.com/JetBrains/gradle-intellij-plugin/
 intellij {
-    version = '2021.3'
+    version = '2021.3.1'
     plugins = ['PsiViewer:213-SNAPSHOT', 'com.intellij.java']
     updateSinceUntilBuild = false
 }
