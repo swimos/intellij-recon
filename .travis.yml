@@ -5,6 +5,8 @@ language: java
 jdk:
   - oraclejdk11
 
+install: skip
+
 script:
   - java --version
   - ./gradlew :generateAll
