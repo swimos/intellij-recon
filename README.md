@@ -1,7 +1,7 @@
 # Intellij Recon Plugin 
 IntelliJ plugin for Recon files
 
-[![Build Status](https://app.travis-ci.com/swimos/intellij-recon.svg?branch=main)](https://app.travis-ci.com/swimos/intellij-recon)
+[![Build Status](https://dev.azure.com/swimai-build/swim-rust/_apis/build/status/swimos.intellij-recon?branchName=main)](https://dev.azure.com/swimai-build/swim-rust/_build/latest?definitionId=7&branchName=main)
 
 ### Running
 1) `./gradlew :generateAll`
