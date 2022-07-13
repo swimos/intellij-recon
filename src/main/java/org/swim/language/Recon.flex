@@ -25,11 +25,11 @@ NAME_START_CHAR =
   [\U00F900-\U00FDCF] | [\U00FDF0-\U00FFFD] | [\U010000-\U0EFFFF]
 
 NAME_CHAR = {NAME_START_CHAR} | "-" | [0-9] | \U0000B7 | [\U000300-\U00036F] | [\U00203F-\U002040]
-STRING_CHAR = [[\U000001-\U00D7FF] | [\U00E000-\U00FFFD] | [\U010000-\U10FFFF] -- ("\"" | "\\" | "@" | "\{" | "}" | "[" | "]" | "\b" | "\f" | "\n" | "\r" | "\t")]
+STRING_CHAR = [[\U000001-\U00D7FF] | [\U00E000-\U00FFFD] | [\U010000-\U10FFFF] -- ("\"" | "\'")] | ")" | "("
 CHAR_ESCAPE = "\\" ("\"" | "\\" | "\/" | "@" | "\{" | "}" | "[" | "]" | "b" | "f" | "n" | "r" | "t")
 BASE_64_CHAR = [A-Za-z0-9+/]
 
-STRING = ("\"" ({STRING_CHAR} | {CHAR_ESCAPE} | {SP})* "\"") | ("\'" ({STRING_CHAR} | {CHAR_ESCAPE} | {SP})* "\'")
+STRING = ("\"" ({STRING_CHAR} | {CHAR_ESCAPE} | "\'" | {SP})* "\"") | ("\'" ({STRING_CHAR} | {CHAR_ESCAPE} | "\"" | {SP})* "\'")
 IDENT = {NAME_START_CHAR} {NAME_CHAR}*
 NUM = "-"? (([1-9] [0-9]*) | [0-9]) ("." [0-9]+)? (("E" | "e") ("+" | "-")? [0-9]+)?
 BOOL = "true" | "false"
@@ -55,6 +55,7 @@ OPERATOR = "=>" | "||" | "&&" | "|" | "^" | "&" | "<" | "<=" | "==" | "!=" | ">=
 <YYINITIAL> {COMMENT}                                       { yybegin(YYINITIAL); return ReconTypes.COMMENT; }
 <YYINITIAL> "%" {DATA}                                      { yybegin(YYINITIAL); return ReconTypes.DATA; }
 <YYINITIAL> "@" ({IDENT} | {STRING})                        { yybegin(YYINITIAL); return ReconTypes.ATTR; }
+<YYINITIAL> "${" [^}]* "}"                                  { yybegin(YYINITIAL); return ReconTypes.CODE; }
 
 <YYINITIAL> {SP}                                            { yybegin(YYINITIAL); return ReconTypes.SP; }
 <YYINITIAL> {NL}                                            { yybegin(YYINITIAL); return ReconTypes.NL; }

@@ -25,7 +25,7 @@ complexAttrHeader ::= blockItem CLOSE_BRACK?
 
 operation ::= whiteSpace* OPERATOR whiteSpace*
 
-primitive ::= DATA | IDENT | STRING | NUM | BOOL | HEX
+primitive ::= DATA | IDENT | STRING | CODE | NUM | BOOL | HEX
 
 literal ::= record | primitive
 

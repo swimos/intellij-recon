@@ -1,6 +1,6 @@
 plugins {
-    id 'org.jetbrains.intellij' version '1.3.0'
-    id "org.jetbrains.grammarkit" version "2021.1.3"
+    id 'org.jetbrains.intellij' version '1.7.0'
+    id "org.jetbrains.grammarkit" version "2021.2.2"
 }
 
 java {
@@ -14,7 +14,7 @@ apply plugin: 'org.jetbrains.grammarkit'
 sourceSets.main.java.srcDirs 'src/main/gen'
 
 group 'org.swim'
-version '1.2.1'
+version '1.3.0'
 
 repositories {
     mavenCentral()
@@ -27,8 +27,8 @@ dependencies {
 
 // See https://github.com/JetBrains/gradle-intellij-plugin/
 intellij {
-    version = '2021.3.1'
-    plugins = ['PsiViewer:213-SNAPSHOT', 'com.intellij.java']
+    version = '2022.1.3'
+    plugins = ['PsiViewer:221-SNAPSHOT', 'com.intellij.java']
     updateSinceUntilBuild = false
 }
 
@@ -48,7 +48,7 @@ task generateAll {
     dependsOn 'generateReconParser'
 }
 
-task generateReconlLexer(type: GenerateLexer) {
+task generateReconlLexer(type: GenerateLexerTask) {
     group = "generate"
     source = "src/main/java/org/swim/language/Recon.flex"
     targetDir = "src/main/gen/org/swim/language"
@@ -56,7 +56,7 @@ task generateReconlLexer(type: GenerateLexer) {
     purgeOldFiles = true
 }
 
-task generateReconParser(type: GenerateParser) {
+task generateReconParser(type: GenerateParserTask) {
     group = "generate"
     source = "src/main/java/org/swim/language/Recon.bnf"
     targetRoot = 'src/main/gen/'

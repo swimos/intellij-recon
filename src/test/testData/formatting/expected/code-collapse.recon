@@ -1,0 +1,17 @@
+tutorial: @fabric {
+    @plane(class: "swim.tutorial.TutorialPlane")
+    myauth: @openId {
+        @issuer("google")
+        # this for google
+        @audience1("${clientId()}")
+        @audience2(${clientId()})
+        @RSAPublicKey {
+            modulus: ${Hex(Base64.urlDecode(mock-value))}
+            publicExponent: ${mock-value}
+        }
+        @RSAPublicKey {
+            modulus: "${Hex(Base64.urlDecode(mock-value))}"
+            publicExponent: ${mock-value}
+        }
+    }
+}

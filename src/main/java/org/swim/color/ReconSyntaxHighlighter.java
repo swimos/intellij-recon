@@ -72,6 +72,8 @@ public class ReconSyntaxHighlighter extends SyntaxHighlighterBase {
             return OPERATOR_KEYS;
         } else if (tokenType.equals(ReconTypes.BOOL)) {
             return BOOL_KEYS;
+        } else if (tokenType.equals(ReconTypes.CODE)) {
+            return DATA_KEYS;
         } else if (tokenType.equals(ReconTypes.STRING)) {
             return STRING_KEYS;
         } else if (tokenType.equals(ReconTypes.IDENT)) {
